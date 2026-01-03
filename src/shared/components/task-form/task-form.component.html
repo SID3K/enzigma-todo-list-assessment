@@ -1,0 +1,110 @@
+<form
+  class="slds-form slds-p-around_medium"
+  [formGroup]="taskForm"
+  (ngSubmit)="submit()">
+
+  <!-- ROW 1 -->
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-2">
+
+      <!-- Assigned To -->
+      <div class="slds-form-element">
+        <label class="slds-form-element__label">Assigned To</label>
+        <div class="slds-form-element__control">
+          <div class="slds-select_container">
+            <select class="slds-select" formControlName="assignedTo">
+                @for(user of assignedToOptions; track user){
+                    <option
+                        [value]="user.value">
+                        {{ user.label }}
+                    </option>
+                }
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="slds-col slds-size_1-of-2">
+
+      <!-- Status -->
+      <div class="slds-form-element">
+        <label class="slds-form-element__label">Status</label>
+        <div class="slds-form-element__control">
+          <div class="slds-select_container">
+            <select class="slds-select" formControlName="status">
+                @for(status of statusOptions; track status){
+                    <option
+                        [value]="status.value">
+                        {{ status.label }}
+                    </option>
+                }
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROW 2 -->
+  <div class="slds-grid slds-gutters slds-m-top_medium">
+    <div class="slds-col slds-size_1-of-2">
+
+      <!-- Due Date -->
+      <div class="slds-form-element">
+        <label class="slds-form-element__label">Due Date</label>
+        <div class="slds-form-element__control">
+          <input
+            type="date"
+            class="slds-input"
+            formControlName="dueDate" />
+        </div>
+      </div>
+
+    </div>
+
+    <div class="slds-col slds-size_1-of-2">
+
+      <!-- Priority -->
+      <div class="slds-form-element">
+        <label class="slds-form-element__label">Priority</label>
+        <div class="slds-form-element__control">
+          <div class="slds-select_container">
+            <select class="slds-select" formControlName="priority">
+                @for(priority of priorityOptions; track priority){
+                    <option
+                        [value]="priority.value">
+                        {{ priority.label }}
+                    </option>
+                }
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROW 3 (FULL WIDTH) -->
+  <div class="slds-grid slds-m-top_medium">
+    <div class="slds-col slds-size_1-of-1">
+
+      <!-- Description -->
+      <div class="slds-form-element">
+        <label class="slds-form-element__label">Description</label>
+        <div class="slds-form-element__control">
+          <textarea
+            class="slds-textarea"
+            rows="4"
+            formControlName="comments"
+            placeholder="Enter description...">
+          </textarea>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</form>
